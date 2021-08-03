@@ -1,0 +1,24 @@
+public void lookup()
+        {
+            SysTableLookup  sysTableLookup;
+            Query query;
+            QueryBuildDataSource qbdsView;
+ 
+            ;
+
+            sysTableLookup = SysTableLookup::newParameters(tableNum(HLA_TB_Marca), this);
+
+            query = new Query();
+
+            qbdsView = query.addDataSource(tableNum(HLA_TB_Marca));
+
+            qbdsView.addRange(fieldNum(HLA_TB_Marca,UnidadNegocioId)).value(UnidadNegocio.valueStr());
+
+            sysTableLookup.addLookupfield(fieldNum(HLA_TB_Marca, MarcaId));
+            sysTableLookup.addLookupfield(fieldNum(HLA_TB_Marca, Descripcion));
+            sysTableLookup.addLookupfield(fieldNum(HLA_TB_Marca, UnidadNegocioId));
+
+            sysTableLookup.parmQuery(query);
+            sysTableLookup.parmUseLookupValue(true);
+            sysTableLookup.performFormLookup();
+        }
