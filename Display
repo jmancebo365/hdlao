@@ -1,0 +1,11 @@
+display Description ColeccionDescripcion(HLA_TB_Accionamiento tbAccionamiento)
+        {
+            HLA_TB_Coleccion tbColeccion;
+            select Descripcion from tbColeccion where tbColeccion.UnidadNegocioId == tbAccionamiento.UnidadNegocioId 
+                && tbColeccion.MarcaId      == tbAccionamiento.MarcaId
+                && tbColeccion.FamiliaId    == tbAccionamiento.FamiliaId
+                && tbColeccion.LineaId      == tbAccionamiento.LineaId
+                && tbColeccion.ColeccionId  == tbAccionamiento.ColeccionId;
+
+            return tbColeccion.Descripcion;
+        }
